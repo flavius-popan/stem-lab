@@ -2,7 +2,7 @@
 
 Claude Code powered stem splitting for the pros and plebs.
 
-Drop a song in, ask Claude for the stems you want, get clean separations back. The repo ships with a built-in audio-separation expert (it lives in `CLAUDE.md`) so you don't need to know which model to pick — Claude handles the chain.
+Drop a song in, ask Claude for the stems you want, get clean separations back. Under the hood stem-lab wraps [audio-separator](https://github.com/nomadkaraoke/python-audio-separator) (the model loader doing the actual separation work) and bundles a Claude expert (`CLAUDE.md`) that picks models and runs chains for you — no need to know which model to use yourself.
 
 Made for Macs (Apple Silicon especially), but `setup.sh` will pick the best option for your machine.
 
@@ -67,6 +67,17 @@ projects/mysong/
 | Full chain (BS-Roformer → HTDemucs-FT) | ~5–10 min |
 
 Roformer is the slow part. Worth it for vocal isolation; everything else is much faster.
+
+## Optional: bleeding-edge models
+
+A few models stem-lab knows about (SCNet-XL-IHF, BS-Roformer-SW, Apollo, others) aren't bundled with audio-separator. To make them available, clone the MSST framework into the repo:
+
+```bash
+git clone https://github.com/ZFTurbo/Music-Source-Separation-Training msst
+uv pip install -r msst/requirements.txt
+```
+
+Claude will use it when one of those models is the right pick. Community model index: [jarredou's MSST-Colab-Inference repo](https://github.com/jarredou/Music-Source-Separation-Training-Colab-Inference).
 
 ## Notes
 

@@ -22,9 +22,9 @@ Help them get the best separations, understand what's happening underneath, and 
 
 ## Toolchain
 
-- **Primary:** `audio-separator` via uv. Installed with arch-aware extra (`[cpu]` on arm64 macOS gets CoreML; `[gpu]` on NVIDIA gets CUDA).
-- **Secondary:** MSST (`ZFTurbo/Music-Source-Separation-Training`) at `./msst/` for community checkpoints not yet in audio-separator's loader.
-- **Catalog:** `jarredou/Music-Source-Separation-Training-Colab-Inference` README — current download links.
+- **Primary:** `audio-separator` via uv. Installed with arch-aware extra (`[cpu]` on arm64 macOS gets CoreML; `[gpu]` on NVIDIA gets CUDA). Run `uv run audio-separator --list_models` to see what's currently shipped — this is the source of truth for what's installable today, and it gets new entries with every release.
+- **Secondary:** MSST (`ZFTurbo/Music-Source-Separation-Training` — github.com/ZFTurbo/Music-Source-Separation-Training) at `./msst/` for community checkpoints not yet in audio-separator's loader. Canonical SDR table: `docs/pretrained_models.md` in that repo.
+- **Catalog:** `jarredou/Music-Source-Separation-Training-Colab-Inference` (github.com/jarredou/Music-Source-Separation-Training-Colab-Inference) README — the live community model index, updated more often than ZFTurbo's docs. Direct download links to every important checkpoint.
 - **Cache:** `~/.cache/audio-separator/`.
 
 Prefer `uv run audio-separator …` for everyday work; `uv run python msst/inference.py …` for MSST-only models. For alternative frontends, see `SOURCES.md` Tier 1.
@@ -115,7 +115,7 @@ Interpret the residual fresh per situation — what the disagreement means depen
 | Lossy restoration | Apollo (`JusperLee/Apollo`) | Apply *after* separation |
 | Crowd removal | `mel_band_roformer_crowd_aufr33_viperx_sdr_8.7144.ckpt` | Bootleg cleanup |
 
-When stale, check `SOURCES.md` Tier 1 (MSST `pretrained_models.md`, jarredou README) and Tier 2 (MVSep leaderboard).
+This is a snapshot, not a registry. Always run `uv run audio-separator --list_models` first to see what's currently shipped — newer/better checkpoints land regularly. Use the cheatsheet as a baseline for known-good picks; for anything outside it, verify against jarredou's README (the live community index) and MSST `pretrained_models.md`.
 
 ---
 
@@ -140,7 +140,7 @@ Surface meaningfully new info — papers, benchmarks, checkpoints, tools — but
 
 Update workflow is defined in `SOURCES.md`; follow it. Triggers:
 
-1. **New SOTA on a cheatsheet task** — replace entry; keep old as footnote if still active. Verify per `SOURCES.md` (≥2 independent sources).
+1. **Cheatsheet drift** — when `--list_models` shows a newer/higher-SDR variant of a cheatsheet pick (or audio-separator added a model that beats the cheatsheet pick on this task), verify it (jarredou README + HF model card; ≥2 independent confirmations), then replace the entry in the same session. Don't recommend new and leave the file stale — the cheatsheet is meant to evolve.
 2. **New architecture matures** — add to mental model only when public weights *and* community use exist, not just a paper. Skip experimental (Mamba2, Conformer, BS PolarFormer) until then.
 3. **Toolchain change** — new audio-separator major version, MSST scope shift, new Mac UI, MLX gaining Roformer (currently Demucs-only).
 4. **Checkpoint becomes unavailable** — note + alternatives.
@@ -153,7 +153,7 @@ Update workflow is defined in `SOURCES.md`; follow it. Triggers:
 
 ## When the user asks…
 
-- **"Best for X?"** → Cheatsheet. If absent/stale, `SOURCES.md` Tier 1. Exact filename always.
+- **"Best for X?"** → Run `uv run audio-separator --list_models | grep -iE '<keyword>'` first to see what's shipped (the SDR is in the row). Cross-check against the cheatsheet for known-good picks. If something newer or higher-SDR appears in the list, or the cheatsheet pick is missing, verify via jarredou's README before recommending. Exact filename always.
 - **"Why slow/artifact-y?"** → Diagnose by architecture (Roformer = compute-heavy attention; MDX-Net = spectrogram U-Net failures; Demucs = waveform aliasing). Suggest config or different family.
 - **"Compare X and Y."** → Run both on a 30-sec chunk and listen. Don't just cite SDR.
 - **"What's new since [date]?"** → Walk `SOURCES.md` Tier 1 → 2 → 3, not aggregators.
