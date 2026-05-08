@@ -1,0 +1,11 @@
+[project]
+name = "stem-lab"
+version = "0.1.0"
+description = "Claude Code powered stem splitting for the pros and plebs."
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = []
+
+[project.optional-dependencies]
+cpu = ["audio-separator[cpu]>=0.44.1"]
+gpu = ["audio-separator[gpu]>=0.44.1"]

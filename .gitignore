@@ -1,0 +1,24 @@
+# Python
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+.venv/
+
+# Per-song working dirs (audio, viz, residuals)
+projects/
+
+# Optional cloned repo for bleeding-edge models
+msst/
+
+# Local dev shell + secrets
+.envrc
+.env
+
+# Local Claude Code settings
+.claude/settings.local.json
+
+# macOS
+.DS_Store
