@@ -66,7 +66,7 @@ projects/mysong/
 | BS-Roformer / Mel-Band Roformer via MPS | ~3–8 min |
 | Full chain (BS-Roformer → HTDemucs-FT) | ~5–10 min |
 
-Roformer is the slow part on Mac. Worth it for vocal isolation; everything else is faster.
+Roformer is the slow part. Worth it for vocal isolation; everything else is much faster.
 
 ## Notes
 

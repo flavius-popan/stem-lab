@@ -57,10 +57,10 @@ Where producers and audio engineers share what actually works on real material.
 - **Gearspace** — "Best Stem Separator [year]" threads run continuously. The 2025/2026 threads are the cleanest snapshot of pro consensus. Subforum: Electronic Music Instruments and Production.
 - **KVR Audio** — UVR5 megathread and adjacent. Slower than Gearspace but more technical depth on individual model behavior.
 - **AudioSEX** — useful for finding which models work on which genres; less polished than Gearspace.
-- **QuadraphonicQuad** — niche but excellent for surround/multitrack-style analytical work, exactly the user's use case.
+- **QuadraphonicQuad** — niche but excellent for surround/multitrack-style analytical work.
 
 ### Discord (highest signal, hardest to archive)
-- **AI Hub Discord** — where unwa, becruily, Gabox, and other trainers actually hang out. Most new checkpoints get announced there days/weeks before they hit Hugging Face. The user should join if they want to be on the absolute frontier.
+- **AI Hub Discord** — where unwa, becruily, Gabox, and other trainers actually hang out. Most new checkpoints get announced there days/weeks before they hit Hugging Face. Worth joining if you want to be on the absolute frontier.
 - **MVSep Discord** — operator's community; where ensemble configurations get tuned.
 
 ### Subreddits (lower density, occasional gems)
